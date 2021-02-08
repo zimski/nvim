@@ -48,6 +48,7 @@ set background=dark
 syntax on
 
 set ignorecase
+" set hidden
 set noshowmatch
 set relativenumber
 set nohlsearch
@@ -129,7 +130,8 @@ indent = {
     },
     mappings = {
       i = {
-        ["<esc>"] = actions.close
+        ["<esc>"] = actions.close,
+        ["<C-q>"] = actions.send_to_qflist,
       },
     },
     prompt_position = "bottom",

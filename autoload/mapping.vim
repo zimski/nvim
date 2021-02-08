@@ -1,9 +1,12 @@
 function! mapping#init()
   tnoremap jj <C-\><C-n>
-  nnoremap <leader>h :wincmd h<CR>
-  nnoremap <leader>j :wincmd j<CR>
-  nnoremap <leader>k :wincmd k<CR>
-  nnoremap <leader>l :wincmd l<CR>
+  " nnoremap <leader>h :wincmd h<CR>
+  " nnoremap <leader>j :wincmd j<CR>
+  " nnoremap <leader>k :wincmd k<CR>
+  " nnoremap <leader>l :wincmd l<CR>
+
+  nnoremap <leader>j :m .+1<CR>==
+  nnoremap <leader>k :m .-2<CR>==
   " nnoremap <Leader>ps :Rg<SPACE>
   " nnoremap <leader>pf :GFiles<CR>
   " nnoremap <leader>df :Files<CR>
@@ -13,13 +16,15 @@ function! mapping#init()
   " nnoremap <C-p> :GFiles<CR>
   " nnoremap <C-b> :Buffers<CR>
   nnoremap <F1> :so ~/.config/nvim/init.vim<CR>
+  nnoremap <F2> :cnext<CR>
+  nnoremap <F3> :cprevious<CR>
   nnoremap <Leader>+ :vertical resize +5<CR>
   nnoremap <Leader>- :vertical resize -5<CR>
   " Using lua functions
   nnoremap <leader>pf <cmd>lua require('telescope.builtin').find_files()<cr>
   nnoremap <leader>ff <cmd>lua require('zimo.tele').find_files_same_dir()<cr>
+  nnoremap <leader>bb <cmd>lua require('zimo.tele').buffers()<cr>
   nnoremap <leader>ps <cmd>lua require('telescope.builtin').live_grep()<cr>
-  nnoremap <leader>bb <cmd>lua require('telescope.builtin').buffers()<cr>
   nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
   " nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
   " vnoremap J :m '>+1<CR>gv=gv

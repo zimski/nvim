@@ -17,7 +17,6 @@ function git#init()
     nnoremap <buffer> d 0ciwdrop<ESC>0
   endfunction
 
-
   function! s:rebase_dot() abort
 
     let sha = gv#sha()
