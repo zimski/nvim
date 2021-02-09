@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'scrooloose/syntastic'
-Plug 'w0rp/ale'
+" Plug 'scrooloose/syntastic'
+" Plug 'w0rp/ale'
 
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
@@ -10,7 +10,7 @@ Plug 'w0rp/ale'
 Plug 'lifepillar/gruvbox8'
 Plug 'sainnhe/gruvbox-material'
 Plug 'phanviet/vim-monokai-pro'
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
