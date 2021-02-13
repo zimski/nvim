@@ -25,7 +25,7 @@ Plug 'junegunn/gv.vim'
 
 Plug 'tpope/vim-surround'
 " Plug 'tpope/vim-dispatch'
-" Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails'
 Plug 'vim-test/vim-test'
 Plug 'kassio/neoterm'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
@@ -101,6 +101,10 @@ let g:neoterm_autoscroll= 1
 " custom chakib config
 call git#init()
 call mapping#init()
+
+highlight TelescopeMatching       guifg=#fabd2f
+highlight TelescopeSelection      guifg=#D79921 gui=bold " selected item
+
 
 :lua << END
 -- require'lspconfig'.tsserver.setup{}

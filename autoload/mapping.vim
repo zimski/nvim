@@ -23,8 +23,10 @@ function! mapping#init()
   " Using lua functions
   nnoremap <leader>pf <cmd>lua require('telescope.builtin').find_files()<cr>
   nnoremap <leader>ff <cmd>lua require('zimo.tele').find_files_same_dir()<cr>
+  nnoremap <leader>fn :e %:h
   nnoremap <leader>bb <cmd>lua require('zimo.tele').buffers()<cr>
   nnoremap <leader>ps <cmd>lua require('telescope.builtin').live_grep()<cr>
+  nnoremap <leader>pS <cmd>lua require('telescope.builtin').grep_string()<cr>
   nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
   " nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
   " vnoremap J :m '>+1<CR>gv=gv
