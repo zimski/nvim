@@ -12,7 +12,8 @@ end
 function M.buffers()
   require('telescope.builtin').buffers(themes.get_dropdown {
     previewer = false,
-    winblend = 10
+    winblend = 10,
+    sort_lastused = true
   })
 end
 

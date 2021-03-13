@@ -28,6 +28,8 @@ function! mapping#init()
   nnoremap <leader>ps <cmd>lua require('telescope.builtin').live_grep()<cr>
   nnoremap <leader>pS <cmd>lua require('telescope.builtin').grep_string()<cr>
   nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+  nnoremap <leader>by :%y<CR>
   " nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
   " vnoremap J :m '>+1<CR>gv=gv
   " vnoremap K :m '<-2<CR>gv=gv" Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
@@ -61,8 +63,8 @@ function! mapping#init()
   nnoremap <Leader><CR> :Ttoggle<CR>
   " test suite
   nmap <silent> <leader>t. :TestNearest<CR>
-  nmap <silent> <leader>tT :TestFile<CR>
-  nmap <silent> <leader>tA :TestSuite<CR>
+  nmap <silent> <leader>tb :TestFile<CR>
+  nmap <silent> <leader>ta :TestSuite<CR>
   nmap <silent> <leader>tt :TestLast<CR>
   nmap <silent> <leader>to :TestVisit<CR>
 
