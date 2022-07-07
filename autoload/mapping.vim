@@ -12,7 +12,7 @@ function! mapping#init()
   " nnoremap <leader>df :Files<CR>
   " nnoremap <leader>ff :Files %:p:h<CR>
   " nnoremap <leader>bb :Buffers<CR>
-  nnoremap <leader>gs :vertical Gstatus<CR>
+  nnoremap <leader>gs :vertical Git<CR>
   " nnoremap <C-p> :GFiles<CR>
   " nnoremap <C-b> :Buffers<CR>
   nnoremap <F1> :so ~/.config/nvim/init.vim<CR>
@@ -21,13 +21,22 @@ function! mapping#init()
   nnoremap <Leader>+ :vertical resize +5<CR>
   nnoremap <Leader>- :vertical resize -5<CR>
   " Using lua functions
-  nnoremap <leader>pf <cmd>lua require('telescope.builtin').find_files()<cr>
+  nnoremap <leader>pf <cmd>lua require('telescope.builtin').find_files({hidden = true})<cr>
   nnoremap <leader>ff <cmd>lua require('zimo.tele').find_files_same_dir()<cr>
   nnoremap <leader>fn :e %:h
   nnoremap <leader>bb <cmd>lua require('zimo.tele').buffers()<cr>
   nnoremap <leader>ps <cmd>lua require('telescope.builtin').live_grep()<cr>
   nnoremap <leader>pS <cmd>lua require('telescope.builtin').grep_string()<cr>
   nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+  " harpoon
+  nnoremap <leader>mm <cmd>lua require("harpoon.mark").add_file()<cr>
+  nnoremap <leader>m1 <cmd>lua require("harpoon.ui").nav_file(1)<cr>
+  nnoremap <leader>m2 <cmd>lua require("harpoon.ui").nav_file(2)<cr>
+  nnoremap <leader>m3 <cmd>lua require("harpoon.ui").nav_file(3)<cr>
+  nnoremap <leader>m4 <cmd>lua require("harpoon.ui").nav_file(4)<cr>
+
+  nnoremap <leader>me <cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>
 
   nnoremap <leader>by :%y<CR>
   " nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
@@ -69,23 +78,23 @@ function! mapping#init()
   nmap <silent> <leader>to :TestVisit<CR>
 
   " coc shortcuts and mapping
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
+  " nmap <silent> gd <Plug>(coc-definition)
+  " nmap <silent> gy <Plug>(coc-type-definition)
+  " nmap <silent> gi <Plug>(coc-implementation)
+  " nmap <silent> gr <Plug>(coc-references)
 
   " Symbol renaming.
-  nmap <leader>rn <Plug>(coc-rename)
+  " nmap <leader>rn <Plug>(coc-rename)
 
-  function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-      execute 'h '.expand('<cword>')
-    elseif (coc#rpc#ready())
-      call CocActionAsync('doHover')
-    else
-      execute '!' . &keywordprg . " " . expand('<cword>')
-    endif
-  endfunction
+  " function! s:show_documentation()
+  "   if (index(['vim','help'], &filetype) >= 0)
+  "     execute 'h '.expand('<cword>')
+  "   elseif (coc#rpc#ready())
+  "     call CocActionAsync('doHover')
+  "   else
+  "     execute '!' . &keywordprg . " " . expand('<cword>')
+  "   endif
+  " endfunction
   " Use K to show documentation in preview window.
   nnoremap <silent> K :call <SID>show_documentation()<CR>
 endfunction

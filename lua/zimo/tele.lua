@@ -5,6 +5,7 @@ function M.find_files_same_dir()
   require('telescope.builtin').find_files(themes.get_dropdown {
     cwd = vim.fn.expand('%:p:h'),
     previewer = false,
+    hidden =  true,
     winblend = 10
   })
 end
@@ -12,6 +13,7 @@ end
 function M.buffers()
   require('telescope.builtin').buffers(themes.get_dropdown {
     previewer = false,
+    hidden =  true,
     winblend = 10,
     sort_lastused = true
   })

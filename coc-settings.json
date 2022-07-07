@@ -1,5 +1,6 @@
 {
     "prettier.htmlWhitespaceSensitivity": true,
     "prettier.eslintIntegration": false,
-    "coc.preferences.formatOnSaveFiletypes": ["typescript", "typescriptreact"]
+    "coc.preferences.formatOnSaveFiletypes": ["typescript", "typescriptreact"],
+    "emmet.includeLanguages": {"eruby": "html"}
 }

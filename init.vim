@@ -1,36 +1,33 @@
 call plug#begin('~/.vim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'scrooloose/syntastic'
-" Plug 'w0rp/ale'
-
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
-" Plug 'wincent/ferret'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'L3MON4D3/LuaSnip'
 
 Plug 'lifepillar/gruvbox8'
 Plug 'sainnhe/gruvbox-material'
 Plug 'phanviet/vim-monokai-pro'
-" Plug 'vim-airline/vim-airline'
+
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'rstacruz/vim-closer'
 Plug 'airblade/vim-gitgutter'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/gv.vim'
-" Plug 'nvim-lua/completion-nvim'
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'mattn/vim-lsp-settings'
 
 Plug 'tpope/vim-surround'
-" Plug 'tpope/vim-dispatch'
+
 Plug 'tpope/vim-rails'
 Plug 'vim-test/vim-test'
 Plug 'kassio/neoterm'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
-" Plug 'tpope/vim-vinegar'
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-hijack.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
@@ -40,6 +37,8 @@ Plug 'chaoren/vim-wordmotion'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'ThePrimeagen/harpoon'
 call plug#end()
 
 colorscheme gruvbox
@@ -99,6 +98,8 @@ let g:neoterm_size= 10
 let g:neoterm_autoscroll= 1
 
 " custom chakib config
+let g:user_emmet_leader_key=','
+
 call git#init()
 call mapping#init()
 
@@ -106,10 +107,14 @@ highlight TelescopeMatching       guifg=#fabd2f
 highlight TelescopeSelection      guifg=#D79921 gui=bold " selected item
 
 
-:lua << END
--- require'lspconfig'.tsserver.setup{}
--- require'lspconfig'.solargraph.setup{}
+" Auto-format *.rs (rust) files prior to saving them
+autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)
 
+
+:lua << END
+require'zimo.lsp'
 require'nvim-treesitter.configs'.setup {
 indent = {
     enable = true
@@ -138,24 +143,15 @@ indent = {
         ["<C-q>"] = actions.send_to_qflist,
       },
     },
-    prompt_position = "bottom",
     prompt_prefix = ">",
     initial_mode = "insert",
     selection_strategy = "reset",
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
-    layout_defaults = {
-      -- TODO add builtin options.
-    },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {},
+    file_ignore_patterns = { ".git"},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     shorten_path = true,
-    winblend = 0,
-    width = 0.75,
-    preview_cutoff = 120,
-    results_height = 1,
-    results_width = 0.8,
     border = {},
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
     color_devicons = true,
